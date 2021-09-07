@@ -13,36 +13,14 @@ import java.util.Scanner;
 import org.apache.commons.net.whois.WhoisClient;
 
 public class WhoisTest {
-	public static void main(String[] args) {
-		String urlstr="http://www.toonhound.com/";
-
-		URL url=null;
-		String cutURl=null;
-		try {
-			url = new URL(urlstr);
-			cutURl=url.getHost();
-			if(cutURl.contains("www.")) {
-				cutURl=cutURl.substring(4);
-			}
-			
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		WhoisTest obj = new WhoisTest();
-		//System.out.println(cutURl);
-		boolean b=obj.isAgeValid(cutURl);
-	}
 	
 	public boolean isAgeValid(String url) {
 		String res = this.getWhois(url);
-		//System.out.print(res);
 		Date age = this.getCreationDate(res);
 		boolean b = false;
 		if (age != null) {
 			b = this.chkDate(age);
 		}	
-		//System.out.println(":"+b);
 		return b;
 	}
 
@@ -76,7 +54,6 @@ public class WhoisTest {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 				date = format.parse(splited[splited.length - 1]);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -87,7 +64,6 @@ public class WhoisTest {
 		StringBuilder result = new StringBuilder("");
 		WhoisClient whois = new WhoisClient();
 		try {
-			// default is internic.net
 			whois.connect(WhoisClient.DEFAULT_HOST);
 			String whoisData1 = whois.query("=" + domainName);
 			result.append(whoisData1);
