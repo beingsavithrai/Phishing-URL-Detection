@@ -56,7 +56,6 @@ public class WhoisTest {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 				date = format.parse(splited[splited.length - 1]);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -67,7 +66,6 @@ public class WhoisTest {
 		StringBuilder result = new StringBuilder("");
 		WhoisClient whois = new WhoisClient();
 		try {
-			// default is internic.net
 			whois.connect(WhoisClient.DEFAULT_HOST);
 			String whoisData1 = whois.query("=" + domainName);
 			result.append(whoisData1);
