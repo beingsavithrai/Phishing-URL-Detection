@@ -32,13 +32,10 @@ public class Extraction_non_alphabets_31_05_2019 {
 			String eachUrl = null;
 			
 			//AFTER FEATURE SELECTION BY FEATURE IMPORTANCE FOR  IMBALANCED DATASET
-			File fileNonAlphabet = new File("results_data/featselect.csv");
+			File fileNonAlphabet = new File("features.csv");
 			
 			//AFTER FEATURE SELECTION BY FEATURE IMPORTANCE FOR BALANCED DATASET
-			//File fileNonAlphabet = new File("results_data/featselect_5000.csv");
-			
-			//NOT-USED AFTER FEATURE SELECTION BY FEATURE IMPORTANCE FOR 10FOLDINGTEST
-			//File fileNonAlphabet = new File("results_data/featselect.csv");
+			//File fileNonAlphabet = new File("features_5000.csv");
 			
 			char[] nonAlphaNumeric = extractNonAlphaNumericChar(fileNonAlphabet);
 			
@@ -46,34 +43,15 @@ public class Extraction_non_alphabets_31_05_2019 {
 			 * Calculate Entropy Only. Output file is vecFile
 			 */
 			//CALCULATION WITH ENTROPY VECTOR FOR IMBALANCED DATASETS
-			//File vecFile = new File("results_data/leg_vec_non_alpha_numericBy_FeatSelect.csv");
-			//File vecFile = new File("results_data/phish_vec_non_alpha_numericBy_FeatSelect.csv");
+			//File vecFile = new File("leg_vec_non_alpha_numericBy_FeatSelect.csv");
+			//File vecFile = new File("phish_vec_non_alpha_numericBy_FeatSelect.csv");
 			
 			//CALCULATION WITH ENTROPY VECTOR FOR BALANCED DATASETS
-			//File vecFile = new File("results_data/phish_vec_non_alpha_numericBy_FeatSelect_5000.csv");
-			File vecFile = new File("results_data/leg_vec_non_alpha_numericBy_FeatSelect_5000.csv");
+			//File vecFile = new File("phish_vec_non_alpha_numericBy_FeatSelect_5000.csv");
+			File vecFile = new File("leg_vec_non_alpha_numericBy_FeatSelect_5000.csv");
 			
 			/*End of Balanced and imbalanced dataset vecFile
 			 * */
-			
-			/*START FOR EXPERIMENT III
-			 * Probability of 21 SELECTED FEATURES*/
-			
-			/* For  N=21 alpha numeric charactersRun */
-			//char[] nonAlphaNumeric = { '#', '@', '-', '.', '$', '*', '(','[','{', ')',']','}', '+', ';', '~', ':', '\'', '/', '%', '?',
-			//		',', '=', '&', '!', '_' };
-			
-			/*For imbalanced dataset
-			 * */
-			//File vecFile = new File("AdditionalTest/leg__vec_seperateNAN.csv");
-			//File vecFile = new File("AdditionalTest/phish__vec_seperateNAN.csv");
-			
-			/*For balanced dataset
-			 * */
-			//File vecFile = new File("AdditionalTest/leg__vec_seperateNAN5000.csv");
-			//File vecFile = new File("AdditionalTest/phish__vec_seperateNAN5000.csv");
-			
-			/*END FOR Probability of 21 SELECTED FEATURES*/
 			
 			BufferedWriter bw = new BufferedWriter(new FileWriter(vecFile));
 
@@ -157,27 +135,6 @@ public class Extraction_non_alphabets_31_05_2019 {
 					totalnacount += nacount[i];
 				}
 				
-				/*Disable comment for EXPERIMENT III (probabilities of NAN)
-				 * Or Enable comment (W/O EXPERIMENT III)
-				 * Probability of NAN characters
-				 * 
-				 */
-				/*
-				double[] proba_nacount=new double[nacount.length];
-				for(int i=0;i<nacount.length;i++) {
-					proba_nacount[i]=nacount[i]/totalnacount;
-					resWrite+=proba_nacount[i]+",";
-				}
-				resWrite+=totalnacount+",";
-				*/
-				
-				/*Disable Comment for Entropy
-				 * Or Enable Comment for W/O Entropy
-				 */
-				/*
-				 * This function calculates Entropy of non alphabets. Returns values of type
-				 * 'Double'.
-				 */
 				resWrite += calEntropyNonAlphabet(nacount, totalnacount) + ",";
 
 				/*
@@ -511,20 +468,13 @@ public class Extraction_non_alphabets_31_05_2019 {
 		Extraction_non_alphabets_31_05_2019 extFeat = new Extraction_non_alphabets_31_05_2019();
 		
 		//FOR IMBALANCED DATASETS
-		//File inpFile = new File("datasource/in_leg_active1.txt");
-		//File inpFile = new File("datasource/phish_file.txt");
+		//File inpFile = new File("in_leg_active1.txt");
+		//File inpFile = new File("phish_file.txt");
 		
 		//FOR BALANCED DTASETS
-		//File inpFile = new File("datasource/phish_5000_data.txt");
-		File inpFile = new File("datasource/leg_5000_data.txt");
+		//File inpFile = new File("phish_5000_data.txt");
+		File inpFile = new File("leg_5000_data.txt");
 		
-		//NOT_USE FOR 10FOLDINGTEST
-		//File inpFile = new File("AdditionalTest/phishing_5000_filter.txt");
-		//File inpFile = new File("AdditionalTest/legitimate_6383_News_filter.txt");
-		
-		//NOT_USEFOR 10FOLDINGTEST
-		//File inpFile = new File("AdditionalTest/phishnewunique.txt");
-		//File inpFile = new File("AdditionalTest/legnewunique.txt");
 		extFeat.extractFeatures(inpFile);
 	}
 }
