@@ -13,26 +13,6 @@ import java.util.Scanner;
 import org.apache.commons.net.whois.WhoisClient;
 
 public class WhoisTest {
-	public static void main(String[] args) {
-		String urlstr="http://www.toonhound.com/";
-
-		URL url=null;
-		String cutURl=null;
-		try {
-			url = new URL(urlstr);
-			cutURl=url.getHost();
-			if(cutURl.contains("www.")) {
-				cutURl=cutURl.substring(4);
-			}
-			
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		WhoisTest obj = new WhoisTest();
-		//System.out.println(cutURl);
-		boolean b=obj.isAgeValid(cutURl);
-	}
 	
 	public boolean isAgeValid(String url) {
 		String res = this.getWhois(url);
