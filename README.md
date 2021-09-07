@@ -1,8 +1,5 @@
-- 👋 Phishing URL Detectioin
-- 👀 I’m interested in phishing detection and data analysis
-- 🌱 I’m currently learning phishing url detection
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+Phishing URL Detection
+--using Lexical Features
 
 <!---
 ESDAUNG/ESDAUNG is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
